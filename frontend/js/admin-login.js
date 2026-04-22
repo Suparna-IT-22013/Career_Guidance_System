@@ -1,5 +1,4 @@
-const API_URL = 'http://localhost:5000/api';
-
+const API_URL = 'https://careerguidancesystem-production.up.railway.app/api';
 function showMessage(message, type) {
     const messageDiv = document.getElementById('message');
     messageDiv.innerHTML = `<div class="message ${type}">${message}</div>`;
