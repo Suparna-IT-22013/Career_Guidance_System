@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board - SkillMatch</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="nav-tabs">
+            <a href="../index.html" class="nav-tab">1. Home</a>
+            <a href="login.html" class="nav-tab">2. Login</a>
+            <a href="dashboard.html" class="nav-tab">3. Dashboard</a>
+            <a href="assessment.html" class="nav-tab">4. Assessment</a>
+            <a href="results.html" class="nav-tab">5. Results</a>
+            <a href="skillgap.html" class="nav-tab">6. Skill Gap</a>
+            <a href="jobs.html" class="nav-tab active">7. Job Board</a>
+            <a href="admin-login.html" class="nav-tab">8. Admin</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="job-board">
+            <!-- Search and Filters -->
+            <div class="search-filters">
+                <div class="filter-group" style="flex: 2;">
+                    <input type="text" id="searchInput" placeholder="Search jobs, companies, skills..." style="width: 100%;">
+                </div>
+                <div class="filter-group">
+                    <button class="btn btn-primary" onclick="searchJobs()">Search</button>
+                </div>
+            </div>
+
+            <!-- Filter Tags -->
+            <div class="search-filters">
+                <div class="filter-tags">
+                    <span class="filter-tag active" data-type="all" onclick="filterByType('all')">All Jobs</span>
+                    <span class="filter-tag" data-type="Remote" onclick="filterByType('Remote')">Remote</span>
+                    <span class="filter-tag" data-type="Full-time" onclick="filterByType('Full-time')">Full-time</span>
+                    <span class="filter-tag" data-type="Part-time" onclick="filterByType('Part-time')">Part-time</span>
+                    <span class="filter-tag" data-type="Internship" onclick="filterByType('Internship')">Internship</span>
+                    <span class="filter-tag" data-location="Dhaka" onclick="filterByLocation('Dhaka')">Dhaka</span>
+                </div>
+            </div>
+
+            <!-- Job List Header -->
+            <div class="job-list-header">
+                <h3>Showing <span id="jobCount">142</span> jobs · sorted by match %</h3>
+                <select id="sortBy" onchange="sortJobs(this.value)" style="padding: 8px 15px; border: 1px solid var(--border); border-radius: 8px;">
+                    <option value="match">Latest</option>
+                    <option value="salary">Salary</option>
+                    <option value="date">Date Posted</option>
+                </select>
+            </div>
+
+            <!-- Jobs List -->
+            <div id="jobsList">
+                <!-- Loading state -->
+                <div id="loadingJobs" class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading jobs...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jobs.js"></script>
+</body>
+</html>

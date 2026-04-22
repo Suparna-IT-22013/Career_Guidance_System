@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SkillMatch</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="nav-tabs">
+            <a href="../index.html" class="nav-tab">1. Home</a>
+            <a href="login.html" class="nav-tab">2. Login</a>
+            <a href="dashboard.html" class="nav-tab">3. Dashboard</a>
+            <a href="assessment.html" class="nav-tab">4. Assessment</a>
+            <a href="results.html" class="nav-tab">5. Results</a>
+            <a href="skillgap.html" class="nav-tab">6. Skill Gap</a>
+            <a href="jobs.html" class="nav-tab">7. Job Board</a>
+            <a href="admin-login.html" class="nav-tab active">8. Admin</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Admin Dashboard</h1>
+            <p style="color: var(--text-gray);">System overview and user management</p>
+        </div>
+
+        <!-- Admin Stats -->
+        <div class="admin-stats">
+            <div class="admin-stat-card purple">
+                <h3 id="totalUsers">2,481</h3>
+                <p>Total users</p>
+            </div>
+            <div class="admin-stat-card green">
+                <h3 id="totalAssessments">9,340</h3>
+                <p>Assessments</p>
+            </div>
+            <div class="admin-stat-card orange">
+                <h3 id="activeJobs">142</h3>
+                <p>Active jobs</p>
+            </div>
+            <div class="admin-stat-card red">
+                <h3 id="flaggedUsers">7</h3>
+                <p>Flagged</p>
+            </div>
+        </div>
+
+        <!-- Admin Content Grid -->
+        <div class="admin-content">
+            <!-- Recent Users -->
+            <div class="card">
+                <h3>Recent users</h3>
+                <div class="user-list" id="recentUsers">
+                    <!-- Users will be loaded here -->
+                    <div class="user-item">
+                        <div class="user-avatar" style="background: #6366f1;">JD</div>
+                        <div class="user-info">
+                            <h4>John Doe</h4>
+                            <p>Seeker</p>
+                        </div>
+                        <span class="user-status active">Active</span>
+                    </div>
+
+                    <div class="user-item">
+                        <div class="user-avatar" style="background: #10b981;">SA</div>
+                        <div class="user-info">
+                            <h4>Sara Ahmed</h4>
+                            <p>Graduate</p>
+                        </div>
+                        <span class="user-status active">Active</span>
+                    </div>
+
+                    <div class="user-item">
+                        <div class="user-avatar" style="background: #6366f1;">RK</div>
+                        <div class="user-info">
+                            <h4>Rahim Khan</h4>
+                            <p>Professional</p>
+                        </div>
+                        <span class="user-status pending">Pending</span>
+                    </div>
+
+                    <div class="user-item">
+                        <div class="user-avatar" style="background: #ef4444;">NI</div>
+                        <div class="user-info">
+                            <h4>Nadia Islam</h4>
+                            <p>Student</p>
+                        </div>
+                        <span class="user-status flagged">Flagged</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Career Searches -->
+            <div class="card">
+                <h3>Top career searches</h3>
+                <div id="topCareers">
+                    <div class="career-search-item">
+                        <span style="font-weight: 500;">Software Engineer</span>
+                        <div class="career-search-bar">
+                            <div class="career-search-bar-fill" style="width: 34%; background: #6366f1;"></div>
+                        </div>
+                        <span style="font-weight: 600; color: #6366f1;">34%</span>
+                    </div>
+
+                    <div class="career-search-item">
+                        <span style="font-weight: 500;">Data Scientist</span>
+                        <div class="career-search-bar">
+                            <div class="career-search-bar-fill" style="width: 26%; background: #10b981;"></div>
+                        </div>
+                        <span style="font-weight: 600; color: #10b981;">26%</span>
+                    </div>
+
+                    <div class="career-search-item">
+                        <span style="font-weight: 500;">UX Designer</span>
+                        <div class="career-search-bar">
+                            <div class="career-search-bar-fill" style="width: 18%; background: #f59e0b;"></div>
+                        </div>
+                        <span style="font-weight: 600; color: #f59e0b;">18%</span>
+                    </div>
+
+                    <div class="career-search-item">
+                        <span style="font-weight: 500;">Product Manager</span>
+                        <div class="career-search-bar">
+                            <div class="career-search-bar-fill" style="width: 12%; background: #f59e0b;"></div>
+                        </div>
+                        <span style="font-weight: 600; color: #f59e0b;">12%</span>
+                    </div>
+                </div>
+
+                <div class="admin-actions">
+                    <button class="btn btn-secondary">Export CSV</button>
+                    <button class="btn btn-primary">Manage Jobs</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Users Table -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>All Users</h3>
+            <div style="overflow-x: auto; margin-top: 20px;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--border); text-align: left;">
+                            <th style="padding: 12px;">Name</th>
+                            <th style="padding: 12px;">Email</th>
+                            <th style="padding: 12px;">Role</th>
+                            <th style="padding: 12px;">Joined</th>
+                            <th style="padding: 12px;">Status</th>
+                            <th style="padding: 12px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="allUsersTable">
+                        <!-- Users will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>Quick Actions</h3>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                <button class="btn btn-primary" onclick="showAddJobModal()">Add New Job</button>
+                <button class="btn btn-secondary" onclick="exportData()">Export All Data</button>
+                <button class="btn btn-secondary" onclick="viewAnalytics()">View Analytics</button>
+                <a href="dashboard.html" class="btn" style="background: var(--text-gray); color: white;">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>

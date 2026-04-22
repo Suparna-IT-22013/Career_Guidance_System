@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SkillMatch</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="nav-tabs">
+            <a href="../index.html" class="nav-tab">1. Home</a>
+            <a href="login.html" class="nav-tab">2. Login</a>
+            <a href="dashboard.html" class="nav-tab active">3. Dashboard</a>
+            <a href="assessment.html" class="nav-tab">4. Assessment</a>
+            <a href="results.html" class="nav-tab">5. Results</a>
+            <a href="skillgap.html" class="nav-tab">6. Skill Gap</a>
+            <a href="jobs.html" class="nav-tab">7. Job Board</a>
+            <a href="admin.html" class="nav-tab">8. Admin</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="greeting">Good morning, <span id="userName">User</span></h1>
+            <span class="completion" id="profileCompletion">25% complete</span>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="assessmentCount">0</div>
+                <div class="stat-label">Assessments</div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-number" id="careerMatches">0</div>
+                <div class="stat-label">Career matches</div>
+            </div>
+            <div class="stat-card orange">
+                <div class="stat-number" id="jobsMatched">0</div>
+                <div class="stat-label">Jobs matched</div>
+            </div>
+            <div class="stat-card red">
+                <div class="stat-number" id="skillGaps">0</div>
+                <div class="stat-label">Skill gaps</div>
+            </div>
+        </div>
+
+        <!-- Dashboard Content - Dynamically populated -->
+        <div id="dashboardContent">
+            <!-- Loading state -->
+            <div style="text-align: center; padding: 60px 20px;">
+                <div class="spinner" style="margin: 0 auto 20px;"></div>
+                <p style="color: var(--text-gray);">Loading dashboard...</p>
+            </div>
+        </div>
+
+        <!-- Assessment History -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>Assessment History</h3>
+            <div id="assessmentHistory">
+                <div style="text-align: center; padding: 20px;">
+                    <div class="spinner" style="margin: 0 auto 15px;"></div>
+                    <p style="color: var(--text-gray);">Loading...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card" style="margin-top: 30px;">
+            <h3>Quick Actions</h3>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                <a href="assessment.html" class="btn btn-primary">Take New Assessment</a>
+                <a href="results.html" class="btn btn-secondary">View Latest Results</a>
+                <a href="jobs.html" class="btn btn-secondary">Browse Jobs</a>
+                <a href="skillgap.html" class="btn btn-secondary">Check Skill Gaps</a>
+                <button onclick="logout()" class="btn" style="background: var(--danger); color: white;">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/dashboard.js?v=5"></script>
+</body>
+</html>

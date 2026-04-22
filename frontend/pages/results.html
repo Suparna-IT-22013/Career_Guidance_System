@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Recommendations - SkillMatch</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="nav-tabs">
+            <a href="../index.html" class="nav-tab">1. Home</a>
+            <a href="login.html" class="nav-tab">2. Login</a>
+            <a href="dashboard.html" class="nav-tab">3. Dashboard</a>
+            <a href="assessment.html" class="nav-tab">4. Assessment</a>
+            <a href="results.html" class="nav-tab active">5. Results</a>
+            <a href="skillgap.html" class="nav-tab">6. Skill Gap</a>
+            <a href="jobs.html" class="nav-tab">7. Job Board</a>
+            <a href="admin-login.html" class="nav-tab">8. Admin</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Results Header -->
+        <div class="results-header">
+            <h1>Your Career Matches</h1>
+            <p style="color: var(--text-gray); margin-top: 10px;">Based on your skills, interests & personality</p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading">
+            <div class="spinner"></div>
+            <p>Analyzing your profile...</p>
+        </div>
+
+        <!-- Results Container -->
+        <div id="resultsContainer" style="display: none;">
+            <!-- Results will be inserted here -->
+        </div>
+
+        <!-- No Results State -->
+        <div id="noResults" style="display: none; text-align: center; padding: 60px 20px;">
+            <div style="font-size: 4rem; margin-bottom: 20px;">📋</div>
+            <h2>No assessment found</h2>
+            <p style="color: var(--text-gray); margin: 15px 0 30px;">Take an assessment to get personalized career recommendations</p>
+            <a href="assessment.html" class="btn btn-primary">Take Assessment</a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div id="actionButtons" style="display: none; text-align: center; margin-top: 40px;">
+            <a href="skillgap.html" class="btn btn-secondary">View Skill Gap</a>
+            <a href="jobs.html" class="btn btn-primary" style="margin-left: 15px;">Browse Jobs</a>
+        </div>
+    </div>
+
+    <script src="../js/results.js"></script>
+</body>
+</html>

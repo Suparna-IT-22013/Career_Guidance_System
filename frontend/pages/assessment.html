@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Assessment - SkillMatch</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="nav-tabs">
+            <a href="../index.html" class="nav-tab">1. Home</a>
+            <a href="login.html" class="nav-tab">2. Login</a>
+            <a href="dashboard.html" class="nav-tab">3. Dashboard</a>
+            <a href="assessment.html" class="nav-tab active">4. Assessment</a>
+            <a href="results.html" class="nav-tab">5. Results</a>
+            <a href="skillgap.html" class="nav-tab">6. Skill Gap</a>
+            <a href="jobs.html" class="nav-tab">7. Job Board</a>
+            <a href="admin.html" class="nav-tab">8. Admin</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="quiz-container">
+            <!-- Quiz Header -->
+            <div class="quiz-header">
+                <h2>Career Assessment Quiz</h2>
+                <div class="step-indicator">Step <span id="currentStep">1</span> of 10</div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="progress-tracker">
+                <div class="progress-tracker-fill" id="progressBar" style="width: 10%"></div>
+            </div>
+
+            <!-- Step 1: Interests -->
+            <div class="quiz-step" id="step1">
+                <div class="question-section">
+                    <h3>Which activities do you enjoy most?</h3>
+                    <p>Select all that apply</p>
+                    <div class="options-grid">
+                        <label class="option-item">
+                            <input type="checkbox" name="interests" value="coding">
+                            <span>💻 Coding & Programming</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="checkbox" name="interests" value="problem-solving">
+                            <span>🧩 Solving Complex Problems</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="checkbox" name="interests" value="design">
+                            <span>🎨 Designing & Creative Work</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="checkbox" name="interests" value="data">
+                            <span>📊 Analyzing Data & Patterns</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="checkbox" name="interests" value="security">
+                            <span>🔒 Security & Protection</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="checkbox" name="interests" value="networking">
+                            <span>🌐 Networking & Infrastructure</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="checkbox" name="interests" value="ai-ml">
+                            <span>🤖 AI & Machine Learning</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="checkbox" name="interests" value="management">
+                            <span>👥 Managing Teams & Projects</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Programming Languages -->
+            <div class="quiz-step" id="step2" style="display: none;">
+                <div class="question-section">
+                    <h3>Programming Languages</h3>
+                    <p>Rate your proficiency (0 = No knowledge, 100 = Expert)</p>
+                    
+                    <div class="skill-slider">
+                        <label><span>Python</span><span class="skill-level" id="pythonLevel">0</span></label>
+                        <input type="range" id="pythonSkill" min="0" max="100" value="0" oninput="updateSkillLevel('python', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>JavaScript</span><span class="skill-level" id="javascriptLevel">0</span></label>
+                        <input type="range" id="javascriptSkill" min="0" max="100" value="0" oninput="updateSkillLevel('javascript', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Java</span><span class="skill-level" id="javaLevel">0</span></label>
+                        <input type="range" id="javaSkill" min="0" max="100" value="0" oninput="updateSkillLevel('java', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>C++</span><span class="skill-level" id="cppLevel">0</span></label>
+                        <input type="range" id="cppSkill" min="0" max="100" value="0" oninput="updateSkillLevel('cpp', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>C#</span><span class="skill-level" id="csharpLevel">0</span></label>
+                        <input type="range" id="csharpSkill" min="0" max="100" value="0" oninput="updateSkillLevel('csharp', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>PHP</span><span class="skill-level" id="phpLevel">0</span></label>
+                        <input type="range" id="phpSkill" min="0" max="100" value="0" oninput="updateSkillLevel('php', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Swift</span><span class="skill-level" id="swiftLevel">0</span></label>
+                        <input type="range" id="swiftSkill" min="0" max="100" value="0" oninput="updateSkillLevel('swift', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Kotlin</span><span class="skill-level" id="kotlinLevel">0</span></label>
+                        <input type="range" id="kotlinSkill" min="0" max="100" value="0" oninput="updateSkillLevel('kotlin', this.value)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Web Development -->
+            <div class="quiz-step" id="step3" style="display: none;">
+                <div class="question-section">
+                    <h3>Web Development Skills</h3>
+                    <p>Rate your proficiency</p>
+                    
+                    <div class="skill-slider">
+                        <label><span>HTML/CSS</span><span class="skill-level" id="htmlcssLevel">0</span></label>
+                        <input type="range" id="htmlcssSkill" min="0" max="100" value="0" oninput="updateSkillLevel('htmlcss', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>React</span><span class="skill-level" id="reactLevel">0</span></label>
+                        <input type="range" id="reactSkill" min="0" max="100" value="0" oninput="updateSkillLevel('react', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Vue.js</span><span class="skill-level" id="vueLevel">0</span></label>
+                        <input type="range" id="vueSkill" min="0" max="100" value="0" oninput="updateSkillLevel('vue', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Node.js</span><span class="skill-level" id="nodejsLevel">0</span></label>
+                        <input type="range" id="nodejsSkill" min="0" max="100" value="0" oninput="updateSkillLevel('nodejs', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Express.js</span><span class="skill-level" id="expressjsLevel">0</span></label>
+                        <input type="range" id="expressjsSkill" min="0" max="100" value="0" oninput="updateSkillLevel('expressjs', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Django</span><span class="skill-level" id="djangoLevel">0</span></label>
+                        <input type="range" id="djangoSkill" min="0" max="100" value="0" oninput="updateSkillLevel('django', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Laravel</span><span class="skill-level" id="laravelLevel">0</span></label>
+                        <input type="range" id="laravelSkill" min="0" max="100" value="0" oninput="updateSkillLevel('laravel', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Spring Boot</span><span class="skill-level" id="springbootLevel">0</span></label>
+                        <input type="range" id="springbootSkill" min="0" max="100" value="0" oninput="updateSkillLevel('springboot', this.value)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Mobile Development -->
+            <div class="quiz-step" id="step4" style="display: none;">
+                <div class="question-section">
+                    <h3>Mobile Development Skills</h3>
+                    <p>Rate your proficiency</p>
+                    
+                    <div class="skill-slider">
+                        <label><span>Android Development</span><span class="skill-level" id="androidLevel">0</span></label>
+                        <input type="range" id="androidSkill" min="0" max="100" value="0" oninput="updateSkillLevel('android', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>iOS Development</span><span class="skill-level" id="iosLevel">0</span></label>
+                        <input type="range" id="iosSkill" min="0" max="100" value="0" oninput="updateSkillLevel('ios', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Flutter</span><span class="skill-level" id="flutterLevel">0</span></label>
+                        <input type="range" id="flutterSkill" min="0" max="100" value="0" oninput="updateSkillLevel('flutter', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>React Native</span><span class="skill-level" id="reactnativeLevel">0</span></label>
+                        <input type="range" id="reactnativeSkill" min="0" max="100" value="0" oninput="updateSkillLevel('reactnative', this.value)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Database & Backend -->
+            <div class="quiz-step" id="step5" style="display: none;">
+                <div class="question-section">
+                    <h3>Database & Backend Skills</h3>
+                    <p>Rate your proficiency</p>
+                    
+                    <div class="skill-slider">
+                        <label><span>SQL/MySQL</span><span class="skill-level" id="sqlLevel">0</span></label>
+                        <input type="range" id="sqlSkill" min="0" max="100" value="0" oninput="updateSkillLevel('sql', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>PostgreSQL</span><span class="skill-level" id="postgresqlLevel">0</span></label>
+                        <input type="range" id="postgresqlSkill" min="0" max="100" value="0" oninput="updateSkillLevel('postgresql', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>MongoDB</span><span class="skill-level" id="mongodbLevel">0</span></label>
+                        <input type="range" id="mongodbSkill" min="0" max="100" value="0" oninput="updateSkillLevel('mongodb', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Redis</span><span class="skill-level" id="redisLevel">0</span></label>
+                        <input type="range" id="redisSkill" min="0" max="100" value="0" oninput="updateSkillLevel('redis', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>REST API</span><span class="skill-level" id="restapiLevel">0</span></label>
+                        <input type="range" id="restapiSkill" min="0" max="100" value="0" oninput="updateSkillLevel('restapi', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>GraphQL</span><span class="skill-level" id="graphqlLevel">0</span></label>
+                        <input type="range" id="graphqlSkill" min="0" max="100" value="0" oninput="updateSkillLevel('graphql', this.value)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: AI/ML & Data Science -->
+            <div class="quiz-step" id="step6" style="display: none;">
+                <div class="question-section">
+                    <h3>AI/ML & Data Science Skills</h3>
+                    <p>Rate your proficiency</p>
+                    
+                    <div class="skill-slider">
+                        <label><span>Machine Learning</span><span class="skill-level" id="mlLevel">0</span></label>
+                        <input type="range" id="mlSkill" min="0" max="100" value="0" oninput="updateSkillLevel('ml', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Deep Learning</span><span class="skill-level" id="dlLevel">0</span></label>
+                        <input type="range" id="dlSkill" min="0" max="100" value="0" oninput="updateSkillLevel('dl', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>TensorFlow</span><span class="skill-level" id="tensorflowLevel">0</span></label>
+                        <input type="range" id="tensorflowSkill" min="0" max="100" value="0" oninput="updateSkillLevel('tensorflow', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>PyTorch</span><span class="skill-level" id="pytorchLevel">0</span></label>
+                        <input type="range" id="pytorchSkill" min="0" max="100" value="0" oninput="updateSkillLevel('pytorch', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Data Analysis</span><span class="skill-level" id="dataanalysisLevel">0</span></label>
+                        <input type="range" id="dataanalysisSkill" min="0" max="100" value="0" oninput="updateSkillLevel('dataanalysis', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Pandas/NumPy</span><span class="skill-level" id="pandasLevel">0</span></label>
+                        <input type="range" id="pandasSkill" min="0" max="100" value="0" oninput="updateSkillLevel('pandas', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>NLP</span><span class="skill-level" id="nlpLevel">0</span></label>
+                        <input type="range" id="nlpSkill" min="0" max="100" value="0" oninput="updateSkillLevel('nlp', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Computer Vision</span><span class="skill-level" id="cvLevel">0</span></label>
+                        <input type="range" id="cvSkill" min="0" max="100" value="0" oninput="updateSkillLevel('cv', this.value)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7: DevOps & Cloud -->
+            <div class="quiz-step" id="step7" style="display: none;">
+                <div class="question-section">
+                    <h3>DevOps & Cloud Skills</h3>
+                    <p>Rate your proficiency</p>
+                    
+                    <div class="skill-slider">
+                        <label><span>Docker</span><span class="skill-level" id="dockerLevel">0</span></label>
+                        <input type="range" id="dockerSkill" min="0" max="100" value="0" oninput="updateSkillLevel('docker', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Kubernetes</span><span class="skill-level" id="kubernetesLevel">0</span></label>
+                        <input type="range" id="kubernetesSkill" min="0" max="100" value="0" oninput="updateSkillLevel('kubernetes', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>AWS</span><span class="skill-level" id="awsLevel">0</span></label>
+                        <input type="range" id="awsSkill" min="0" max="100" value="0" oninput="updateSkillLevel('aws', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Azure</span><span class="skill-level" id="azureLevel">0</span></label>
+                        <input type="range" id="azureSkill" min="0" max="100" value="0" oninput="updateSkillLevel('azure', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>CI/CD</span><span class="skill-level" id="cicdLevel">0</span></label>
+                        <input type="range" id="cicdSkill" min="0" max="100" value="0" oninput="updateSkillLevel('cicd', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Linux/Unix</span><span class="skill-level" id="linuxLevel">0</span></label>
+                        <input type="range" id="linuxSkill" min="0" max="100" value="0" oninput="updateSkillLevel('linux', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Git/GitHub</span><span class="skill-level" id="gitLevel">0</span></label>
+                        <input type="range" id="gitSkill" min="0" max="100" value="0" oninput="updateSkillLevel('git', this.value)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8: Cybersecurity & Networking -->
+            <div class="quiz-step" id="step8" style="display: none;">
+                <div class="question-section">
+                    <h3>Cybersecurity & Networking Skills</h3>
+                    <p>Rate your proficiency</p>
+                    
+                    <div class="skill-slider">
+                        <label><span>Network Security</span><span class="skill-level" id="netsecLevel">0</span></label>
+                        <input type="range" id="netsecSkill" min="0" max="100" value="0" oninput="updateSkillLevel('netsec', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Ethical Hacking</span><span class="skill-level" id="ethicalhackingLevel">0</span></label>
+                        <input type="range" id="ethicalhackingSkill" min="0" max="100" value="0" oninput="updateSkillLevel('ethicalhacking', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Penetration Testing</span><span class="skill-level" id="pentestLevel">0</span></label>
+                        <input type="range" id="pentestSkill" min="0" max="100" value="0" oninput="updateSkillLevel('pentest', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Firewall/IDS/IPS</span><span class="skill-level" id="firewallLevel">0</span></label>
+                        <input type="range" id="firewallSkill" min="0" max="100" value="0" oninput="updateSkillLevel('firewall', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>TCP/IP</span><span class="skill-level" id="tcpipLevel">0</span></label>
+                        <input type="range" id="tcpipSkill" min="0" max="100" value="0" oninput="updateSkillLevel('tcpip', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Cisco/Routing</span><span class="skill-level" id="ciscoLevel">0</span></label>
+                        <input type="range" id="ciscoSkill" min="0" max="100" value="0" oninput="updateSkillLevel('cisco', this.value)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 9: Design & Soft Skills -->
+            <div class="quiz-step" id="step9" style="display: none;">
+                <div class="question-section">
+                    <h3>Design & Soft Skills</h3>
+                    <p>Rate your proficiency</p>
+                    
+                    <div class="skill-slider">
+                        <label><span>UI/UX Design</span><span class="skill-level" id="uiuxLevel">0</span></label>
+                        <input type="range" id="uiuxSkill" min="0" max="100" value="0" oninput="updateSkillLevel('uiux', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Figma/Adobe XD</span><span class="skill-level" id="figmaLevel">0</span></label>
+                        <input type="range" id="figmaSkill" min="0" max="100" value="0" oninput="updateSkillLevel('figma', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Communication</span><span class="skill-level" id="communicationLevel">0</span></label>
+                        <input type="range" id="communicationSkill" min="0" max="100" value="0" oninput="updateSkillLevel('communication', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Problem Solving</span><span class="skill-level" id="problemsolvingLevel">0</span></label>
+                        <input type="range" id="problemsolvingSkill" min="0" max="100" value="0" oninput="updateSkillLevel('problemsolving', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Leadership</span><span class="skill-level" id="leadershipLevel">0</span></label>
+                        <input type="range" id="leadershipSkill" min="0" max="100" value="0" oninput="updateSkillLevel('leadership', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Teamwork</span><span class="skill-level" id="teamworkLevel">0</span></label>
+                        <input type="range" id="teamworkSkill" min="0" max="100" value="0" oninput="updateSkillLevel('teamwork', this.value)">
+                    </div>
+                    <div class="skill-slider">
+                        <label><span>Project Management</span><span class="skill-level" id="projectmgmtLevel">0</span></label>
+                        <input type="range" id="projectmgmtSkill" min="0" max="100" value="0" oninput="updateSkillLevel('projectmgmt', this.value)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 10: Education & Experience -->
+            <div class="quiz-step" id="step10" style="display: none;">
+                <div class="question-section">
+                    <h3>Education & Experience</h3>
+                    
+                    <h4>What is your highest education level?</h4>
+                    <div class="options-grid" style="margin-bottom: 30px;">
+                        <label class="option-item">
+                            <input type="radio" name="education" value="high-school">
+                            <span>High School</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="radio" name="education" value="diploma">
+                            <span>Diploma</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="radio" name="education" value="bachelors">
+                            <span>Bachelor's Degree</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="radio" name="education" value="masters">
+                            <span>Master's Degree</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="radio" name="education" value="phd">
+                            <span>PhD</span>
+                        </label>
+                    </div>
+
+                    <h4>Years of work experience?</h4>
+                    <div class="form-group">
+                        <input type="number" id="experience" min="0" max="50" value="0" style="width: 100%; padding: 15px; font-size: 18px; text-align: center;">
+                    </div>
+
+                    <h4 style="margin-top: 30px;">Preferred Industry (Optional)</h4>
+                    <div class="form-group">
+                        <input type="text" id="industry" placeholder="e.g., Software Development, Data Science, Cybersecurity" style="width: 100%; padding: 15px; font-size: 16px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="quiz-actions">
+                <button id="prevBtn" class="btn btn-secondary" onclick="changeStep(-1)" style="display: none;">Previous</button>
+                <button id="nextBtn" class="btn btn-primary" onclick="changeStep(1)">Next Step</button>
+                <button id="submitBtn" class="btn btn-primary btn-large" onclick="submitAssessment()" style="display: none;">Submit Assessment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/assessment.js"></script>
+</body>
+</html>
